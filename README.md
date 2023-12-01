@@ -1,6 +1,2 @@
 
 # Alex Akin, AOS C111 Final Project
-
-## Satellite imagery with high spatial and temporal resolution has become widely avaliable over the past decade. [Maxar Technologies](https://www.maxar.com/) is the largest satellite imagery company, with a valuation of 6.4 billion USD and the ability to image millions of square kilometers daily with resolutions up to 30 centimeters. Imagery from Maxar and other companies such as [Planet Labs](https://www.planet.com/) are now frequently used by journalists to provide a birds-eye view of a variety of pressing issues, from the wars in [Ukraine](https://www.nytimes.com/2023/09/23/world/europe/russia-ukraine-crimea.html) and [Gaza](https://www.nytimes.com/interactive/2023/10/30/world/middleeast/israel-invasion-gaza-satellite-image-map.html) to the [tracking of a Chinese balloon that crossed into U.S. airspace](https://www.nytimes.com/interactive/2023/03/20/science/chinese-space-balloon-incident.html) and the [hijacking of a ship off the coast of Yemen](https://www.nytimes.com/2023/11/21/world/middleeast/houthi-hijack-ship-galaxy-leader.html).
-
-## dataset that is publicly avaliable on [Kaggle](https://www.kaggle.com/datasets/rhammell/ships-in-satellite-imagery). The satellite imagery is from [Planet Labs](https://en.wikipedia.org/wiki/Planet_Labs)
