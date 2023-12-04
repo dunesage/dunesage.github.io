@@ -3,7 +3,7 @@
 
 ## Introduction
 
-I obtained a dataset called [Ships in Satellite Imagery](https://www.kaggle.com/datasets/rhammell/ships-in-satellite-imagery) from the data science platform Kaggle. The original source of the images in the dataset is the Earth observation company [Planet Labs](https://www.planet.com/).
+I obtained a dataset with the title [Ships in Satellite Imagery](https://www.kaggle.com/datasets/rhammell/ships-in-satellite-imagery) from the data science platform Kaggle. The original source of the images in the dataset is the Earth observation company [Planet Labs](https://www.planet.com/).
 
 ## Data
 
@@ -46,7 +46,7 @@ def load_images_and_labels(folder_path):
 images, labels = load_images_and_labels(folder_path)
 ```
 
-## Modelling
+## Modeling
 
 ## Results
 
