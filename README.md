@@ -16,7 +16,35 @@ A description of the data is given by its curator, [rhammell](https://www.kaggle
 > The "no-ship" class includes 3000 images. A third of these are a random sampling of different land cover features - water, vegetation, bare earth, buildings, etc. - that do not include any portion of a ship. The next third are "partial ships" that contain only a portion of a ship, but not enough to meet the full definition of the "ship" class. The last third are images that have previously been mislabeled by machine learning models, typically caused by bright pixels or strong linear features.
 
 
-I began by
+I began by loading in the image data and labels:
+
+```python 
+def load_images_and_labels(folder_path):
+    images = []
+    labels = []
+
+    for filename in os.listdir(folder_path):
+        if filename.endswith('.png'):
+            # Read the image
+            image_path = os.path.join(folder_path, filename)
+            img = io.imread(image_path)
+
+            # Label the image based on the filename
+            label = 'ship' if filename.startswith('1') else 'noship'
+
+            # Append the image and label to the lists
+            images.append(img)
+            labels.append(label)
+
+    # Convert lists to NumPy arrays
+    images = np.array(images)
+    labels = np.array(labels)
+
+    return images, labels
+
+# Load images and labels
+images, labels = load_images_and_labels(folder_path)
+```
 
 ## Modelling
 
