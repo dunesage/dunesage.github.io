@@ -1,5 +1,6 @@
 title: dunesage.github.io
 description: 
-logo: 
+logo: /favicon.ico
+favicon: /favicon.ico
 show_downloads: true
 theme: jekyll-theme-minimal
