@@ -15,6 +15,8 @@ I obtained a dataset with the title [Ships in Satellite Imagery](https://www.kag
 
 > **'no-ship':** A third of these are a random sampling of different land cover features - water, vegetation, bare earth, buildings, etc. - that do not include any portion of a ship. The next third are "partial ships" that contain only a portion of a ship, but not enough to meet the full definition of the "ship" class. The last third are images that have previously been mislabeled by machine learning models, typically caused by bright pixels or strong linear features.
 
+![RGB](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/rgb_ships.png)
+
 ## Modeling
 
 I applied a random forest model to the dataset. First, I found the best hyperparameters using `RandomizedSearchCV`, which turned out to be 
@@ -25,7 +27,7 @@ Then, I ran the model, achieving a test accuracy of 96.25% and a training accura
 
 Plotted below is the confusion matrix when the model is run on the test data.
 
-![Raw Image](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/confusion_matrix.png)
+![Confusion Matrix](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/confusion_matrix.png)
 
 
 
