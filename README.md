@@ -3,7 +3,7 @@
 
 ## Introduction
 
-Remote sensing from space has grown rapidly as a field since the launch of Landsat 1, the first Earth observation satellite, by NASA in 1972. Now, publicly-traded companies like [Planet Labs](https://www.planet.com/) are able to image the entire land surface of the Earth daily at unprecedented spatial scales, leading to a massive increase in the amount of data avaliable. Planet maintains an image archive of 50 petabytes that have been collected by its over 200 satellites in orbit, [some having up to 50cm resolution](https://www.planet.com/products/hi-res-monitoring/).
+Remote sensing from space has grown rapidly in the past decade. The field began in earnest with the launch of Landsat 1, the first Earth observation satellite, by NASA in 1972. Now, publicly-traded companies like [Planet Labs](https://www.planet.com/) are able to image the entire land surface of the Earth daily at unprecedented spatial scales, leading to a massive increase in the amount of data avaliable. Planet maintains an image archive of 50 petabytes that have been collected by its over 200 satellites in orbit, [some having up to 50cm resolution](https://www.planet.com/products/hi-res-monitoring/).
 
 ## Data
 
@@ -57,6 +57,8 @@ images, labels = load_images_and_labels(folder_path)
 ## Conclusion
 
 ## References
+
+[Tatem, A. J., Goetz, S. J., & Hay, S. I. (2008). Fifty Years of Earth Observation Satellites: Views from above have lead to countless advances on the ground in both scientific knowledge and daily life. American Scientist, 96(5), 390–398. https://doi.org/10.1511/2008.74.390](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2690060/)
 
 <img align="left" width="800" height="800" src="/Images/visualization_1.png">
 
