@@ -17,6 +17,9 @@ I obtained a dataset with the title [Ships in Satellite Imagery](https://www.kag
 
 <img align="left" width="1500" height="1000" src="/Images/rgb_ships.png">
 
+![alt text](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/rgb_ships.png)
+
+
 ## Modeling
 
 ## Results
