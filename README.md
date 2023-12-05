@@ -3,9 +3,11 @@
 
 ## Introduction
 
-I obtained a dataset with the title [Ships in Satellite Imagery](https://www.kaggle.com/datasets/rhammell/ships-in-satellite-imagery) from the data science platform Kaggle. The original source of the images in the dataset is the Earth observation company [Planet Labs](https://www.planet.com/).
+Remote sensing from space has grown rapidly as a field since the launch of Landsat 1, the first Earth observation satellite, by NASA in 1972. Now, publicly-traded companies like [Planet Labs](https://www.planet.com/) are able to image the entire land surface of the Earth daily at unprecedented spatial scales, leading to a massive increase in the amount of data avaliable. Planet maintains an image archive of 50 petabytes that have been collected by its over 200 satellites in orbit, [some having up to 50cm resolution](https://www.planet.com/products/hi-res-monitoring/).
 
 ## Data
+
+I obtained a dataset with the title [Ships in Satellite Imagery](https://www.kaggle.com/datasets/rhammell/ships-in-satellite-imagery) from the data science platform Kaggle. The curator of the data is the user [rhammell](https://www.kaggle.com/rhammell), who extracted "images...from Planet satellite imagery collected over the San Francisco Bay and San Pedro Bay areas of California" 
 
 A description of the data is given by its curator, [rhammell](https://www.kaggle.com/rhammell): 
 
