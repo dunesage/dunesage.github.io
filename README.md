@@ -15,10 +15,19 @@ I obtained a dataset with the title [Ships in Satellite Imagery](https://www.kag
 
 > **'no-ship':** A third of these are a random sampling of different land cover features - water, vegetation, bare earth, buildings, etc. - that do not include any portion of a ship. The next third are "partial ships" that contain only a portion of a ship, but not enough to meet the full definition of the "ship" class. The last third are images that have previously been mislabeled by machine learning models, typically caused by bright pixels or strong linear features.
 
-![alt text](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/rgb_ships.png)
-
-
 ## Modeling
+
+I applied a random forest model to the dataset. First, I found the best hyperparameters using `RandomizedSearchCV`, which turned out to be 
+
+`n_estimators=142, max_depth=16, min_samples_leaf=8` with `class_weight='balanced'`
+
+Then, I ran the model, achieving a test accuracy of 96.25% and a training accuracy of 98.97%.
+
+Plotted below is the confusion matrix when the model is run on the test data.
+
+![Raw Image](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/confusion_matrix.png)
+
+
 
 ## Results
 
@@ -29,7 +38,4 @@ I obtained a dataset with the title [Ships in Satellite Imagery](https://www.kag
 ## References
 
 [Tatem, A. J., Goetz, S. J., & Hay, S. I. (2008). Fifty Years of Earth Observation Satellites: Views from above have lead to countless advances on the ground in both scientific knowledge and daily life. American Scientist, 96(5), 390–398. https://doi.org/10.1511/2008.74.390](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2690060/)
-
-<img align="left" width="800" height="800" src="/Images/visualization_1.png">
-
 
