@@ -5,7 +5,7 @@
 
 Remote sensing from space began in earnest with the launch of Landsat 1, the first Earth observation satellite, by NASA in 1972. The field has grown rapidly in recent years. Now, publicly-traded companies like [Planet Labs](https://www.planet.com/) are able to image the entire land surface of the Earth daily at unprecedented spatial scales, leading to a massive increase in the amount of data avaliable. Planet maintains an image archive of 50 petabytes and operates 200 satellites, [some having up to 50cm resolution](https://www.planet.com/products/hi-res-monitoring/). 
 
-The amount of satellite imagery collected by Earth observation satellites in orbit around the Earth is simply too large for careful human review. The application of machine learning models can be a helpful tool to apply in the effort to classify images into useful categories.
+The amount of satellite imagery collected by Earth observation satellites has become too large for careful human review. The application of machine learning models can be a helpful tool to apply in the effort to classify images into useful categories.
 
 ## Data
 
@@ -15,37 +15,7 @@ I obtained a dataset with the title [Ships in Satellite Imagery](https://www.kag
 
 > **'no-ship':** A third of these are a random sampling of different land cover features - water, vegetation, bare earth, buildings, etc. - that do not include any portion of a ship. The next third are "partial ships" that contain only a portion of a ship, but not enough to meet the full definition of the "ship" class. The last third are images that have previously been mislabeled by machine learning models, typically caused by bright pixels or strong linear features.
 
-
-
-I began by loading in the image data and labels:
-
-```python 
-def load_images_and_labels(folder_path):
-    images = []
-    labels = []
-
-    for filename in os.listdir(folder_path):
-        if filename.endswith('.png'):
-            # Read the image
-            image_path = os.path.join(folder_path, filename)
-            img = io.imread(image_path)
-
-            # Label the image based on the filename
-            label = 'ship' if filename.startswith('1') else 'noship'
-
-            # Append the image and label to the lists
-            images.append(img)
-            labels.append(label)
-
-    # Convert lists to NumPy arrays
-    images = np.array(images)
-    labels = np.array(labels)
-
-    return images, labels
-
-# Load images and labels
-images, labels = load_images_and_labels(folder_path)
-```
+<img align="left" width="1500" height="1000" src="/Images/rgb_ships.png">
 
 ## Modeling
 
