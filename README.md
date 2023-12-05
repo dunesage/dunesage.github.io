@@ -3,19 +3,18 @@
 
 ## Introduction
 
-Remote sensing from space has grown rapidly in the past decade. The field began in earnest with the launch of Landsat 1, the first Earth observation satellite, by NASA in 1972. Now, publicly-traded companies like [Planet Labs](https://www.planet.com/) are able to image the entire land surface of the Earth daily at unprecedented spatial scales, leading to a massive increase in the amount of data avaliable. Planet maintains an image archive of 50 petabytes that have been collected by its over 200 satellites in orbit, [some having up to 50cm resolution](https://www.planet.com/products/hi-res-monitoring/).
+Remote sensing from space began in earnest with the launch of Landsat 1, the first Earth observation satellite, by NASA in 1972. The field has grown rapidly in recent years. Now, publicly-traded companies like [Planet Labs](https://www.planet.com/) are able to image the entire land surface of the Earth daily at unprecedented spatial scales, leading to a massive increase in the amount of data avaliable. Planet maintains an image archive of 50 petabytes and operates 200 satellites, [some having up to 50cm resolution](https://www.planet.com/products/hi-res-monitoring/). 
+
+The amount of satellite imagery collected by Earth observation satellites in orbit around the Earth is simply too large for careful human review. The application of machine learning models can be a helpful tool to apply in the effort to classify images into useful categories.
 
 ## Data
 
-I obtained a dataset with the title [Ships in Satellite Imagery](https://www.kaggle.com/datasets/rhammell/ships-in-satellite-imagery) from the data science platform Kaggle. The curator of the data is the user [rhammell](https://www.kaggle.com/rhammell), who extracted "images...from Planet satellite imagery collected over the San Francisco Bay and San Pedro Bay areas of California" 
+I obtained a dataset with the title [Ships in Satellite Imagery](https://www.kaggle.com/datasets/rhammell/ships-in-satellite-imagery) from the data science platform Kaggle. The curator of the data is the user [rhammell](https://www.kaggle.com/rhammell), who shared 4000 80x80 RGB images "extracted from Planet satellite imagery over the San Francisco Bay and San Pedro Bay areas of California." Of these 4000 images, 1000 were labeled as 'ship' and 3000 as 'no-ship'. The particulars of each class are described below by [rhammell](https://www.kaggle.com/rhammell):
 
-A description of the data is given by its curator, [rhammell](https://www.kaggle.com/rhammell): 
+> **'ship':** Images in this class are centered on the body of a single ship. Ships of different sizes, orientations, and atmospheric collection conditions are included. 
 
-> The dataset consists of images extracted from Planet satellite imagery collected over the San Francisco Bay and San Pedro Bay areas of California. It includes 4000 80x80 RGB images labeled with either a "ship" or "no-ship" classification. Images were derived from PlanetScope full-frame visual scene products, which are orthorectified to a 3-meter pixel size.
+> **'no-ship':** A third of these are a random sampling of different land cover features - water, vegetation, bare earth, buildings, etc. - that do not include any portion of a ship. The next third are "partial ships" that contain only a portion of a ship, but not enough to meet the full definition of the "ship" class. The last third are images that have previously been mislabeled by machine learning models, typically caused by bright pixels or strong linear features.
 
-> The "ship" class includes 1000 images. Images in this class are centered on the body of a single ship. Ships of different sizes, orientations, and atmospheric collection conditions are included. 
-
-> The "no-ship" class includes 3000 images. A third of these are a random sampling of different land cover features - water, vegetation, bare earth, buildings, etc. - that do not include any portion of a ship. The next third are "partial ships" that contain only a portion of a ship, but not enough to meet the full definition of the "ship" class. The last third are images that have previously been mislabeled by machine learning models, typically caused by bright pixels or strong linear features.
 
 
 I began by loading in the image data and labels:
