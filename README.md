@@ -15,7 +15,9 @@ I obtained a dataset with the title [Ships in Satellite Imagery](https://www.kag
 
 > **'no-ship':** A third of these are a random sampling of different land cover features - water, vegetation, bare earth, buildings, etc. - that do not include any portion of a ship. The next third are "partial ships" that contain only a portion of a ship, but not enough to meet the full definition of the "ship" class. The last third are images that have previously been mislabeled by machine learning models, typically caused by bright pixels or strong linear features.
 
-![RGB](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/rgb.png)
+To illustrate the differences between these two classes of image
+
+![RGB](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/rgbf.png)
 
 ## Modeling
 
