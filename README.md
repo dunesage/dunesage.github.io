@@ -17,7 +17,7 @@ I obtained a dataset with the title [Ships in Satellite Imagery](https://www.kag
 
 To illustrate the differences between these two classes of image
 
-![RGB](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/rgbf.png)
+![RGB](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/rgb.png)
 
 ## Modeling
 
