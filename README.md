@@ -20,16 +20,15 @@ To illustrate the differences between these two classes of image, I plotted the 
 
 ## Modeling
 
-I applied a random forest model to the dataset. First, I found the best hyperparameters using `RandomizedSearchCV`, which turned out to be 
+I applied a random forest model to the dataset. First, I experimented with hyperparameters using `RandomizedSearchCV`, and landed on these:
 
-`n_estimators=142, max_depth=16, min_samples_leaf=8` with `class_weight='balanced'`
+`n_estimators=300, max_depth=25, min_samples_leaf=5` with `class_weight='balanced'`
 
-Then, I ran the model, achieving a test accuracy of 96.25% and a training accuracy of 98.97%.
+Then, I ran the model, achieving a test accuracy of 96.50% and a training accuracy of 99.47%.
 
 Plotted below is the confusion matrix when the model is run on the test data.
 
 ![Confusion Matrix](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/confusion_matrix.png)
-
 
 
 ## Results
