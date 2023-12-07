@@ -41,6 +41,7 @@ Plotted below is the confusion matrix for the model:
 
 And the ROC and Precision-Recall curves:
 
+![ROC/REC](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/roc_rec.png)
 #### Figure 3: ROC and Precision-Recall Curves
 
 ![Feature Importance](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/features.png)
