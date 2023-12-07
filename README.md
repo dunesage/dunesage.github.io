@@ -11,8 +11,8 @@ Remote sensing from space began in earnest with the launch of Landsat 1, the fir
 
 The amount of satellite imagery collected by Earth observation satellites has become too large for careful human review. The application of machine learning models can be a helpful tool to apply in the effort to classify images into useful categories. I use a ***random forest of decision trees*** to classify Planet imagery in order to investigate the opportunities and challenges of this tool from a scientific perspective.
 
-In relation to the wider world of machine learning models, a random forest is an ensemble method that improves upon the performance of an individual decision tree. As my data set was labeled, this is considered supervised learning. Specifically, I selected a binary classification tree architecture, meaning that my decision trees returns either a 0 ('noship') or 1 ('ship'). I built it using scikit-learn's `RandomForestClassifier` implementation. 
-![scikitlearn](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/ml_model.png)
+In relation to the wider world of machine learning models, a random forest is an ensemble method that improves upon the performance of an individual decision tree. As my data set was labeled, this is considered supervised learning. Specifically, I selected a binary classification tree architecture, meaning that my decision trees returns either a 0 ('noship') or 1 ('ship'). I built it using scikit-learn's `RandomForestClassifier` implementation. See the below "machine learning map" for a comprehensive overview of models and approaches.
+![scikitlearn](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/ml_map.png)
 
 ## Data
 
