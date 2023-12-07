@@ -40,7 +40,9 @@ We can clearly see the distinction between the 'ship and 'no-ship' classes in al
 
 ## Modeling
 
-I use a ***random forest of decision trees*** to classify Planet imagery in order to investigate the opportunities and challenges of this tool from a scientific perspective.
+Belgiu and Drăguţ (2016)[^2] mention that random forests have been implemented successfully to classify satellite imagery sourced from both commercial and governmental programs, including NASA (MODIS, Landsat, and IKONOS), the European Space Agency (WorldView-2), and Planet Labs itself (RapidEye). These models helped create maps of boreal forest habitats, tree biomass, canopy cover, and even insect defoliation levels.
+
+I use a ***random forest of decision trees*** to classify Planet imagery in order to investigate the opportunities and challenges of this tool from a scientific perspective. 
 
 In relation to the wider world of machine learning models, a random forest is an ensemble method that improves upon the performance of an individual decision tree. As my data set was labeled, this is considered supervised learning. Specifically, I selected a binary classification tree architecture, meaning that my decision trees returns either a 0 ('noship') or 1 ('ship'). I built it using scikit-learn's `RandomForestClassifier` implementation. 
 
@@ -82,5 +84,5 @@ Finally, I used my model to classify ships with seven of the provided scenes. Th
 ## References
 
 [^1]: [Tatem, A. J., Goetz, S. J., & Hay, S. I. (2008). Fifty Years of Earth Observation Satellites: Views from above have lead to countless advances on the ground in both scientific knowledge and daily life. American Scientist, 96(5), 390–398. https://doi.org/10.1511/2008.74.390](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2690060/)
-[^2]: 
+[^2]: [Belgiu, Mariana, and Lucian Drăguţ. “Random Forest in Remote Sensing: A Review of Applications and Future Directions.” ISPRS Journal of Photogrammetry and Remote Sensing, vol. 114, Apr. 2016, pp. 24–31. ScienceDirect, https://doi.org/10.1016/j.isprsjprs.2016.01.011.](https://www.sciencedirect.com/science/article/pii/S0924271616000265)
 
