@@ -29,7 +29,7 @@ Inspired by the idea of identifying ships from satellite data, I obtained a data
 
 In other words, the author intentionally constructed this data set to give machine learning engineers an interesting challenge due to the diversity in the conditions and characteristics of the imagery. 
 
-The images can be loaded in as an array of shape (4000, 80, 80, 3). This comes out to 73.24 megabytes, which is a manageable size to train machine learning models in environments such as Google Colaboratory.
+The images can be loaded in as an array of shape (4000, 80, 80, 3), and flattened to 4000 images of 19200 values. This comes out to 73.24 megabytes, which is a manageable size to train machine learning models in the Google Colaboratory environment.
 
 To illustrate the differences between these two classes of image, I plotted the average red, green, and blue values for the two classes of image (recall that [RGB values](https://en.wikipedia.org/wiki/RGB_color_model) range from 0-255) over an 80x80 grid:
 
