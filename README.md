@@ -11,11 +11,6 @@ Remote sensing from space began in earnest with the launch of Landsat 1, the fir
 
 The amount of satellite imagery collected by Earth observation satellites has become too large for careful human review. The application of machine learning models can be a helpful tool to apply in the effort to classify images into useful categories. I use a ***random forest of decision trees*** to classify Planet imagery in order to investigate the opportunities and challenges of this tool from a scientific perspective.
 
-In relation to the wider world of machine learning models, a random forest is an ensemble method that improves upon the performance of an individual decision tree. As my data set was labeled, this is considered supervised learning. Specifically, I selected a binary classification tree architecture, meaning that my decision trees returns either a 0 ('noship') or 1 ('ship'). I built it using scikit-learn's `RandomForestClassifier` implementation. 
-
-Refer to the map below for an overview of machine learning models.
-![scikitlearn](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/ml_map.png)
-
 ## Data
 
 I obtained a dataset with the title [Ships in Satellite Imagery](https://www.kaggle.com/datasets/rhammell/ships-in-satellite-imagery) from the data science platform Kaggle. The data was posted by the user [rhammell](https://www.kaggle.com/rhammell), who shared 4000 80x80 RGB images "extracted from Planet satellite imagery over the San Francisco Bay and San Pedro Bay areas of California." Of these 4000 images, 1000 were labeled as 'ship' and 3000 as 'no-ship'. The particulars of each class are described below by the curator of the data set:
@@ -37,7 +32,14 @@ We can clearly see the distinction between the 'ship and 'no-ship' classes
 
 ## Modeling
 
-I applied a random forest model to the dataset. First, I experimented with hyperparameters using `RandomizedSearchCV`, and landed on these:
+In relation to the wider world of machine learning models, a random forest is an ensemble method that improves upon the performance of an individual decision tree. As my data set was labeled, this is considered supervised learning. Specifically, I selected a binary classification tree architecture, meaning that my decision trees returns either a 0 ('noship') or 1 ('ship'). I built it using scikit-learn's `RandomForestClassifier` implementation. 
+
+Initially I had considered using convolutional neural networks, but I soon realized that their long training time would be an impediment to testing different model architectures and finding ideal hyperparameters. I also found that CNNs did not demonstrate improved accuracy when compared to random forests on this particular data set.
+
+Refer to the map below for an overview of machine learning models.
+![scikitlearn](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/ml_map.png)
+
+I experimented with hyperparameters using `RandomizedSearchCV`, and landed on these:
 
 `n_estimators=300, max_depth=25, min_samples_leaf=5` with `class_weight='balanced'`
 
