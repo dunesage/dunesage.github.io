@@ -14,9 +14,12 @@ I obtained a dataset with the title [Ships in Satellite Imagery](https://www.kag
 
 > **'no-ship':** A third of these are a random sampling of different land cover features - water, vegetation, bare earth, buildings, etc. - that do not include any portion of a ship. The next third are "partial ships" that contain only a portion of a ship, but not enough to meet the full definition of the "ship" class. The last third are images that have previously been mislabeled by machine learning models, typically caused by bright pixels or strong linear features.
 
-To illustrate the differences between these two classes of image, I plotted the average RGB values across the two classes of image, with the averages :
+To illustrate the differences between these two classes of image, I plotted the average red, green, and blue values for the two classes of image (recall that [RGB values](https://en.wikipedia.org/wiki/RGB_color_model) range from 0-255) over an 80x80 grid:
 
 ![RGB](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/rgb.png)
+#### Figure 1: Average RGB values
+
+We can clearly see the distinction between the 'ship and 'no-ship' classes
 
 ## Modeling
 
@@ -26,12 +29,20 @@ I applied a random forest model to the dataset. First, I experimented with hyper
 
 Then, I ran the model, achieving a test accuracy of 96.50% and a training accuracy of 99.47%.
 
-Plotted below is the confusion matrix when the model is run on the test data.
+Plotted below is the confusion matrix for the model:
 
 ![Confusion Matrix](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/confusion_matrix.png)
+#### Figure 2: Confusion Matrix
 
+And the ROC and Precision-Recall curves:
+
+#### Figure 3: ROC and Precision-Recall Curves
 
 ## Results
+
+Finally, I used my model to classify ships with seven of the provided scenes. This was included as a way to visualize the performance of the model as it is applied across a satellite image of a larger area. 
+
+#### Figu
 
 ## Discussion
 
