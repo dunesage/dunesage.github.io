@@ -39,8 +39,11 @@ Then, I ran the model, achieving a test accuracy of 96.50% and a training accura
 
 Plotted below is the confusion matrix for the model and the ROC and Precision-Recall curves:
 
-![CM/ROC/REC](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/combined_plots.png)
-#### Figure 3: Confusion Matrix, ROC and Precision-Recall Curves
+![CM/FI](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/combined_plots.png)
+#### Figure 3: Confusion Matrix and Feature Importance
+
+![ROC/REC](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/roc_rec.png)
+#### Figure 4: ROC and Precision-Recall Curves
 
 ## Results
 
