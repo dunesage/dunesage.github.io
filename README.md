@@ -48,11 +48,6 @@ I use a ***random forest of decision trees*** to classify Planet imagery in orde
 
 In relation to the wider world of machine learning models, a random forest is an ensemble method that improves upon the performance of an individual decision tree. As my data set was labeled, this is considered supervised learning. Specifically, I selected a binary classification tree architecture, meaning that my decision trees returns either a 0 ('noship') or 1 ('ship'). I built it using scikit-learn's `RandomForestClassifier` implementation. 
 
-Initially I had considered using convolutional neural networks, but I soon realized that their long training time would be an impediment to testing different model architectures and finding ideal hyperparameters. I also found that CNNs did not demonstrate improved accuracy when compared to random forests on this particular data set.
-
-Refer to the map below for an overview of machine learning models.
-![scikitlearn](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/ml_map.png)
-
 I experimented with hyperparameters using `RandomizedSearchCV`, and landed on these:
 
 `n_estimators=300, max_depth=25, min_samples_leaf=5` with `class_weight='balanced'`
