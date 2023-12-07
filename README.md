@@ -1,4 +1,5 @@
-# Alex Akin, AOS C111 Final Project
+# Final Project, Atmospheric and Oceanic Sciences C111: Introduction to Machine Learning for the Physical Sciences
+# By Alex Akin
 
 ## Introduction
 
