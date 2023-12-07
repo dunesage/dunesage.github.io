@@ -43,14 +43,19 @@ And the ROC and Precision-Recall curves:
 
 #### Figure 3: ROC and Precision-Recall Curves
 
+![Feature Importance](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/features.png)
+#### Figure 4: Feature Importance
+
+#### Figure 5:
+
 ## Results
 
 Finally, I used my model to classify ships with seven of the provided scenes. This was included as a way to visualize the performance of the model as it is applied across a satellite image of a larger area. 
 
 ![Results](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/ship_detection.png)
-#### Figure 4:
+#### Figure 6:
 
-#### Figure 5:
+#### Figure 7:
 
 ## Discussion
 
