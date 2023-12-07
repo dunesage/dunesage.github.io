@@ -1,5 +1,7 @@
-# Final Project, Atmospheric and Oceanic Sciences C111: Introduction to Machine Learning for the Physical Sciences
-# By Alex Akin
+# Random Forest Ship Detection
+Final Project in Atmospheric and Oceanic Sciences C111: Introduction to Machine Learning for the Physical Sciences
+
+By Alex Akin
 
 ## Introduction
 
