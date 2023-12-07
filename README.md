@@ -34,20 +34,13 @@ I applied a random forest model to the dataset. First, I experimented with hyper
 
 Then, I ran the model, achieving a test accuracy of 96.50% and a training accuracy of 99.47%.
 
-Plotted below is the confusion matrix for the model:
 
-![Confusion Matrix](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/confusion_matrix.png)
-#### Figure 2: Confusion Matrix
+#### Figure 2:
 
-And the ROC and Precision-Recall curves:
+Plotted below is the confusion matrix for the model and the ROC and Precision-Recall curves:
 
-![ROC/REC](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/roc_rec.png)
-#### Figure 3: ROC and Precision-Recall Curves
-
-![Feature Importance](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/features.png)
-#### Figure 4: Feature Importance
-
-#### Figure 5:
+![CM/ROC/REC](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/combined_plots.png)
+#### Figure 3: Confusion Matrix, ROC and Precision-Recall Curves
 
 ## Results
 
