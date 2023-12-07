@@ -40,7 +40,7 @@ And the ROC and Precision-Recall curves:
 
 ## Results
 
-Finally, I used my model to classify ships with seven of the provided scenes. This was included as a way to visualize the performance of the model as it is applied across a satellite image of a larger area. 
+Finally, I used my model to classify ships with seven of the provided scenes. This was included as a way to visualize the performance of the model as it is applied across a satellite image of a larger area. .
 
 #### Figu
 
