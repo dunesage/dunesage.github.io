@@ -31,12 +31,14 @@ In other words, the author intentionally constructed this data set to give machi
 
 The images can be loaded in as an array of shape 4000x80x80x3, and flattened to 4000 images of 19200 values. This comes out to 73.24 megabytes, which is a manageable size to train machine learning models in the Google Colaboratory environment.
 
-To illustrate the differences between these two classes of image, I plotted the average red, green, and blue values for the two classes of image (recall that [RGB values](https://en.wikipedia.org/wiki/RGB_color_model) range from 0-255) over an 80x80 grid. I also added the average value of every 20x20 square to make the trends more clear. 
+To illustrate the differences between these two classes of image, I plotted the average red, green, and blue values for the two classes of image (recall that [RGB values](https://en.wikipedia.org/wiki/RGB_color_model) range from 0-255 and signify the intensity of each color) over an 80x80 grid. I also added the average value of every 20x20 square to make the trends more clear. 
 
 ![RGB](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/rgb.png)
 #### Figure 1: Average RGB values
 
-We can clearly see the distinction between the 'ship and 'no-ship' classes in all three channels: note the darker shading in the middle of the images for the first row and the absence of that in the second row. The 'ship' class has higher values in the center of the image and lower values toward the edges, while 'noship' has much more uniform values. Note that the average ship included in the 'ship' class is tilted at about a 20 degree angle to the right of the vertical, extends from 10 to 70 on the y-axis and 20 to 60 on the x-axis, and is about 10 pixels wide. Also, the center of the average ship has higher average RGB values than the bow or the stern, which tracks since not all the ships are oriented this way but are all centered in order to be included in the 'ship' class. 
+We can clearly see the distinction between the 'ship and 'no-ship' classes in all three channels: note the darker shading in the middle of the images for the first row and the absence of that in the second row. The 'ship' class has higher values in the center of the image and lower values toward the edges, while 'noship' has much more uniform values. 
+
+Note that the average ship included in the 'ship' class is tilted at about a 20 degree angle to the right of the vertical, extends from 10 to 70 on the y-axis and 20 to 60 on the x-axis, and is about 10 pixels wide. Also, the center of the average ship has higher average RGB values than the bow or the stern, which tracks since not all the ships are oriented this way but are all centered in order to be included in the 'ship' class. In the 'no-ship' class, there is still a small increase of about 10 from the RGB values on the edge of the image to those at the center. This could be due to the inclusion of 1000 "partial ships" as a third of the 3000 image 'no-ship' class.
 
 ## Modeling
 
