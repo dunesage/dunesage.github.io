@@ -67,7 +67,7 @@ Plotted below is the confusion matrix for the model along with the feature impor
 
 ## Results
 
-Finally, I used my model to classify ships with seven of the provided scenes. This was included as a way to visualize the performance of the model as it is applied across a satellite image of a larger area. 
+Finally, I used my model to classify ships with seven of the provided scenes (I left out the 8th scene, 'sfbay_1', because it had 4 channels rather than matching the 3 channels of the RGB training data). This was included as a way to visualize the performance of the model as it is applied across a satellite image of a larger area. 
 
 ![Results](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/ship_detection.png)
 
