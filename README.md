@@ -1,4 +1,4 @@
-# Final Project: Ship Detection with Random Forest and Neural Net
+# Final Project: Ship Detection with Random Forest and Neural Network
 
 Alex Akin
 
@@ -46,7 +46,7 @@ Note that the average ship included in the 'ship' class is tilted at about a 20 
 
 Belgiu and Drăguţ (2016)[^2] mention that random forests have been implemented successfully to classify satellite imagery sourced from both commercial and governmental programs, including NASA (MODIS, Landsat, and IKONOS), the European Space Agency (WorldView-2), and Planet Labs itself (RapidEye). These models were used to create maps of boreal forest habitats, tree biomass, canopy cover, and insect defoliation levels. The authors say that random forest models "outperform decision tree classifiers (Ghimire et al., 2012, Gislason et al., 2006, Han et al., 2015)...and ANN classifiers (Chan and Paelinckx, 2008) in terms of classification accuracy."
 
-I use a ***random forest of decision trees*** to classify Planet imagery in order to investigate the opportunities and challenges of applying this model architecture. I also discuss the performance of two neural networks I trained (artificial and convolutional), but these models generalized poorly to the 'scenes' included in the data set. Thus, I focus on analyzing the performance and characteristics of the random forest model I trained.
+I use a ***random forest of decision trees*** and an ***artificial neural network*** to classify Planet imagery in order to investigate the opportunities and challenges of applying this model architecture. I discuss the performance of the models I trained and how they generalized to the 'scenes' included in the data set. 
 
 In relation to the wider world of machine learning models, a random forest is an ensemble method that improves upon the performance of an individual decision tree. As my data set was labeled, this is considered supervised learning. Specifically, I selected a binary classification tree architecture, meaning that my decision trees returns either a 0 ('noship') or 1 ('ship'). I built it using scikit-learn's `RandomForestClassifier` implementation. 
 
@@ -76,14 +76,32 @@ The values of the two evaluation metrics shown on the above plot of the ROC and 
 
 ## Results
 
-Finally, I used my model to classify ships with seven of the provided scenes (I left out the 8th scene, 'sfbay_1', because it had 4 channels rather than matching the 3 channels of the RGB training data). This was included as a way to visualize the performance of the model as it is applied across a satellite image of a larger area. 
+Finally, I used my model to classify ships with seven of the provided scenes (I left out the 8th scene, 'sfbay_1', because it had 4 channels rather than matching the 3 channels of the RGB training data). These scenes were included as a way to visualize the performance of the model as it is applied across a satellite image of a larger area. I used 
 
 ![Results](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/rf_results.png)
 #### Figure 5: Ship Detection Results with Random Forest
 
 We can see that the random forest is classifying most of the actual ships correctly, but is generalizing poorly to parts of the scene such as piers and breakwaters.
 
+For my ANN architecture, I chose a deep learning approach with four hidden layers configured with ReLU activations:
 
+```python
+model = models.Sequential([
+    layers.InputLayer(input_shape=(flattened_images.shape[1],)), # Input layer
+    layers.Dense(300, activation = 'relu'), # First hidden layer 
+    layers.Dense(100, activation = 'relu'), # Second hidden layer
+    layers.Dense(100, activation = 'relu'), # Third hidden layer
+    layers.Dense(100, activation = 'relu'), # Fourth hidden layer
+    layers.Dense(1, activation='sigmoid')  # Output layer for binary classification
+])
+```
+
+I had experimented with various architectures and this one performs decently well compared to the random forest model. See below for results:
+
+![Results](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/ann_results.png)
+#### Figure 6: Ship Detection Results with Artificial Neural Network
+
+In contrast with the random forest results, this artificial neural network doesn't have a problem with breakwaters, which represent relatively "skinny" lines running across a given image. However, it has significant issues with coastal images, which make up most of the false positives here. In Alamitos Bay in 'lb_4' (located in the upper right), one can visually see that there are many FPs along the water channel.
 
 #### Figure 7:
 
