@@ -12,11 +12,9 @@ December 8, 2023
 
 ## Introduction
 
-Remote sensing from space began in earnest with the launch of Landsat 1, the first Earth observation satellite, by NASA in 1972 [See Tatem et al. (2008) [^1] for further reading on the history of remote sensing]. The field has grown rapidly in recent years. Now, publicly-traded companies like [Planet Labs](https://www.planet.com/) are able to image the entire land surface of the Earth daily at unprecedented spatial scales, leading to a massive increase in the amount of data available. Planet maintains an image archive of 50 petabytes and operates 200 satellites, [some having up to 50cm resolution](https://www.planet.com/products/hi-res-monitoring/). 
+Remote sensing from space began in earnest with the launch of Landsat 1, the first Earth observation satellite, by NASA in 1972 [See Tatem et al. (2008) [^1] for further reading on the history of remote sensing]. The field has grown rapidly in recent years. Now, publicly-traded companies like [Planet Labs](https://www.planet.com/) are able to image the entire land surface of the Earth daily at unprecedented spatial scales, leading to a massive increase in the amount of data available. Planet maintains an image archive of 50 petabytes and operates 200 satellites, [some having up to 50cm resolution](https://www.planet.com/products/hi-res-monitoring/). The amount of satellite imagery collected by Earth observation satellites has become too large for careful human review.
 
-Machine learning was first defined 13 years earlier by Arthur Samuel in 1959, and closely related fields such as artificial intelligence and computer vision have evolved in tandem with it. These fields have taken the world by storm in the past decade. They have numerous applications, from large language models to self-driving cars.
-
-The amount of satellite imagery collected by Earth observation satellites has become too large for careful human review. The application of machine learning models can be a helpful tool to apply in the effort to classify images into useful categories.
+Machine learning was first defined by Arthur Samuel in 1959, and closely related fields such as artificial intelligence and computer vision have evolved in tandem with it. The rapid growth of these fields has taken the world by storm in the past decade. They have numerous applications, from large language models to self-driving cars. Machine learning models can also be a helpful tool to apply in order to classify satellite images into useful categories. 
 
 ## Data
 
