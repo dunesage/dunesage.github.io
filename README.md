@@ -108,6 +108,8 @@ In contrast with the random forest results, this artificial neural network doesn
 
 ## Conclusion
 
+We can see that each model has its own emergent strengths and weaknesses due to the fundamental differences in architecture between a random forest and a neural network.
+
 ## References
 
 [^1]: [Tatem, A. J., Goetz, S. J., & Hay, S. I. (2008). Fifty Years of Earth Observation Satellites: Views from above have lead to countless advances on the ground in both scientific knowledge and daily life. American Scientist, 96(5), 390–398. https://doi.org/10.1511/2008.74.390](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2690060/)
