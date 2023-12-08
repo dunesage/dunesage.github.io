@@ -44,7 +44,7 @@ Note that the average ship included in the 'ship' class is tilted at about a 20 
 
 Belgiu and Drăguţ (2016)[^2] mention that random forests have been implemented successfully to classify satellite imagery sourced from both commercial and governmental programs, including NASA (MODIS, Landsat, and IKONOS), the European Space Agency (WorldView-2), and Planet Labs itself (RapidEye). These models were used to create maps of boreal forest habitats, tree biomass, canopy cover, and even insect defoliation levels! The authors say  
 
-I use a ***random forest of decision trees*** to classify Planet imagery in order to investigate the opportunities and challenges of this tool from a scientific perspective. 
+I use a ***random forest of decision trees*** to classify Planet imagery in order to investigate the opportunities and challenges of applying this model architecture. I also use an artificial neural network and convolutional neural network, but these NN models generalized poorly to the 'scenes' included in the data set. Thus, I focus on analyzing the performance and characteristics of the random forest model I trained.
 
 In relation to the wider world of machine learning models, a random forest is an ensemble method that improves upon the performance of an individual decision tree. As my data set was labeled, this is considered supervised learning. Specifically, I selected a binary classification tree architecture, meaning that my decision trees returns either a 0 ('noship') or 1 ('ship'). I built it using scikit-learn's `RandomForestClassifier` implementation. 
 
@@ -54,18 +54,21 @@ I experimented with hyperparameters using `RandomizedSearchCV`, and landed on th
 
 Then, I ran the model, achieving a test accuracy of 96.50% and a training accuracy of 99.47%.
 
-
 #### Figure 2:
 
-Plotted below is the confusion matrix for the model along with the feature importances and the ROC and Precision-Recall curves:
+Plotted below is the confusion matrix for the model along with the feature importances:
 
 ![CM/FI](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/cm_fi.png)
 #### Figure 3: Confusion Matrix and Feature Importance
 
 The model is predicting fewer false positives than false negatives. Interestingly, the highest feature importances are all clustered at the center of the 80x80 grid, meaning that the pixels at the center of the images are most important and informative for making correct predictions. This confirms what we know about the labels: that the images in the 'ships' class "are centered on the body of a single ship", which is what distinguishes them from the 'no-ship' class. Therefore, this plot of feature importance for my random forest model makes intuitive sense given what we know about the structure of the data set. 
 
+Below are the ROC and Precision-Recall curves
+
 ![ROC/REC](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/roc_rec.png)
 #### Figure 4: ROC and Precision-Recall Curves
+
+The values of the two evaluation metrics shown on the above plot, AUC (Area Under Curve) and AP (Average Precision), range from 0 to 1. Values closer to 1 mean that the model is exhibiting excellent performance at the binary classification task. This is certainly the case here, as 
 
 ## Results
 
