@@ -56,19 +56,17 @@ I experimented with hyperparameters using `RandomizedSearchCV`, and landed on th
 
 Then, I ran the model, achieving a test accuracy of 96.50% and a training accuracy of 99.47%.
 
-#### Figure 2:
-
 Plotted below is the confusion matrix for the model alongside the feature importances on an 80x80 grid:
 
-![CM/FI](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/cm_fi.png)
-#### Figure 3: Confusion Matrix and Feature Importance
+![Confusion Matrix and Feature Importance for Random Forest](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/rf_cm_fi.png)
+#### Figure 2: Confusion Matrix and Feature Importance for Random Forest
 
 This model is predicting fewer false positives (11) than false negatives (17). Interestingly, the highest feature importances are all clustered at the center of the 80x80 grid, meaning that the pixels at the center of the images are most important and informative for making correct predictions. This confirms what we know about the labels: that the images in the 'ships' class "are centered on the body of a single ship", which is what distinguishes them from the 'no-ship' class. Therefore, this plot of feature importance for my random forest model makes intuitive sense given what we know about the structure of the data set. 
 
 Below are the ROC and Precision-Recall curves, which are useful visualizations of the model's performance:
 
-![ROC/REC](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/roc_rec.png)
-#### Figure 4: ROC and Precision-Recall Curves
+![ROC and Precision-Recall Curves for Random Forest](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/rf_roc_rec.png)
+#### Figure 3: ROC and Precision-Recall Curves for Random Forest
 
 On the left subplot, we see the ROC curve with a baseline classifer that performs no better than random chance plotted as `y=x`. On the right subplot, the Precision-Recall curve is plotted. Put simply, maximizing precision means being fine with missing false negatives, while maximizing recall implies not caring about false positives.
 
@@ -89,23 +87,25 @@ model = models.Sequential([
 
 I had experimented with various architectures and this one performs decently well compared to the random forest model, but takes much longer to train and implement.
 
+#### Figure :
+
+#### Figure :
+
 ## Results
 
 Finally, I used my model to classify ships with seven of the provided scenes (I left out the 8th scene, 'sfbay_1', because it had 4 channels rather than matching the 3 channels of the RGB training data). These scenes were included as a way to visualize the performance of the model as it is applied across a satellite image of a larger area. I used 
 
 ![Results](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/rf_results.png)
-#### Figure 5: Ship Detection Results with Random Forest
+#### Figure x: Ship Detection Results with Random Forest
 
 We can see that the random forest is classifying most of the actual ships correctly, but is generalizing poorly to parts of the scene such as piers and breakwaters.
 
 ANN results:
 
 ![Results](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/ann_results.png)
-#### Figure 6: Ship Detection Results with Artificial Neural Network
+#### Figure x+1: Ship Detection Results with Artificial Neural Network
 
 In contrast with the random forest results, this artificial neural network doesn't have a problem with breakwaters, which represent relatively "skinny" lines running across a given image. However, it has significant issues with coastal images, which make up most of the false positives here. In Alamitos Bay in 'lb_4' (located in the upper right), one can visually see that there are many FPs along the water channel.
-
-#### Figure 7:
 
 ## Discussion
 
