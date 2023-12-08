@@ -14,14 +14,16 @@ December 8, 2023
 
 Remote sensing from space began in earnest with the launch of Landsat 1, the first Earth observation satellite, by NASA in 1972 [See Tatem et al. (2008) [^1] for further reading on the history of remote sensing]. The field has grown rapidly in recent years. Now, publicly-traded companies like [Planet Labs](https://www.planet.com/) are able to image the entire land surface of the Earth daily at unprecedented spatial scales, leading to a massive increase in the amount of data available. Planet maintains an image archive of 50 petabytes and operates 200 satellites, [some having up to 50cm resolution](https://www.planet.com/products/hi-res-monitoring/). The amount of satellite imagery collected by Earth observation satellites has become too large for careful human review.
 
-Machine learning was first defined by Arthur Samuel in 1959, and closely related fields such as artificial intelligence and computer vision have evolved in tandem with it. The rapid growth of these fields has taken the world by storm in the past decade. They have numerous applications, from large language models to self-driving cars. Machine learning models can also be a helpful tool to apply in order to classify satellite images into useful categories. 
+Machine learning was first defined by Arthur Samuel in 1959, and closely related fields such as artificial intelligence and computer vision have evolved in tandem with it. The rapid growth of these fields has taken the world by storm in the past decade. They have numerous applications, from large language models to self-driving cars. Machine learning models can also be a helpful tool to apply in order to classify satellite images into useful categories, and this is the topic I seek to explore in this paper.
 
 ## Data
 
 Journalists at leading newspapers use Planet Labs imagery to provide a birds-eye view of many current events. For example, The New York Times [Visual Investigations team](https://www.nytimes.com/spotlight/visual-investigations) found a Planet image of a cargo ship called Galaxy Leader that was [anchored offshore](https://www.nytimes.com/2023/11/21/world/middleeast/houthi-hijack-ship-galaxy-leader.html) before being hijacked off the coast of Yemen:
 ![nyt](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/nyt.png)
 
-Inspired by the idea of identifying ships from satellite data, I obtained a dataset with the title [Ships in Satellite Imagery](https://www.kaggle.com/datasets/rhammell/ships-in-satellite-imagery) from the data science platform Kaggle. The data was posted by the user [rhammell](https://www.kaggle.com/rhammell), who shared 4000 80x80 RGB images "extracted from Planet satellite imagery over the San Francisco Bay and San Pedro Bay areas of California." These are some of the busiest port areas in California for container shipping, being located offshore of the state's two main metropolitan areas: the Bay Area and Los Angeles. The ports of Los Angeles and Long Beach in particular are the busiest container shipping locations in the Western Hemisphere. Of these 4000 images, 1000 were labeled as 'ship' and 3000 as 'no-ship'. The particulars of each class are described below by the curator of the data set:
+Inspired by the idea of identifying ships from satellite data, I obtained a dataset with the title [Ships in Satellite Imagery](https://www.kaggle.com/datasets/rhammell/ships-in-satellite-imagery) from the data science platform Kaggle. The data was posted by the user [rhammell](https://www.kaggle.com/rhammell), who shared 4000 80x80 RGB images "extracted from Planet satellite imagery over the San Francisco Bay and San Pedro Bay areas of California." These are some of the busiest port areas in California for container shipping, being located in the state's two main metropolitan areas: the Bay Area and Los Angeles. The ports of Los Angeles and Long Beach in particular are the busiest container shipping locations in the Western Hemisphere. This makes ship detection a potentially useful tool as a ground truth method for analyzing the number of ships offshore major ports. This could be relevant to understanding the supply chain and industries such as logistics.
+
+Of these 4000 images, 1000 were labeled as 'ship' and 3000 as 'no-ship'. The particulars of each class are described below by the curator of the data set:
 
 > **'ship':** Images in this class are centered on the body of a single ship. Ships of different sizes, orientations, and atmospheric collection conditions are included. 
 
@@ -44,13 +46,11 @@ There are also eight scenes included in the data set, which are larger satellite
 
 ## Modeling
 
-Belgiu and Drăguţ (2016)[^2] mention that random forests have been implemented successfully to classify satellite imagery sourced from both commercial and governmental programs, including NASA (MODIS, Landsat, and IKONOS), the European Space Agency (WorldView-2), and Planet Labs itself (RapidEye). These models were used to create maps of boreal forest habitats, tree biomass, canopy cover, and insect defoliation levels. Belgiu and Drăguţ note that random forest models "outperform decision tree classifiers (Ghimire et al., 2012, Gislason et al., 2006, Han et al., 2015)...and ANN classifiers (Chan and Paelinckx, 2008) in terms of classification accuracy."
-
 I used two different machine learning approaches: a ***random forest of decision trees*** and an ***artificial neural network*** to classify the images in the data set.
 
 A random forest is an ensemble method that improves upon the performance of an individual decision tree. As my data set was labeled, this is considered supervised learning. Specifically, I selected a binary classification tree architecture, meaning that my decision trees returns either a 0 ('no-ship') or 1 ('ship'). I built it using scikit-learn's `RandomForestClassifier` implementation. I experimented with hyperparameters using `RandomizedSearchCV`, and landed on these: `n_estimators=300, max_depth=25, min_samples_leaf=5` with `class_weight='balanced'`.
 
-For my artificial neural network architecture, I chose a deep learning model with four hidden layers configured with ReLU activations:
+I used the `keras` interface of the `TensorFlow` library to construct my ANN. For my artificial neural network architecture, I chose a deep learning model with four hidden layers configured with ReLU activations:
 
 ```python
 model = models.Sequential([
@@ -81,16 +81,18 @@ Below are the ROC and Precision-Recall curves, which are useful visualizations o
 
 On the left subplot, we see the ROC curve with a baseline classifer that performs no better than random chance plotted as `y=x`. On the right subplot, the Precision-Recall curve is plotted.
 
-The values of the two evaluation metrics shown on the above plot of the ROC and Precision-Recall Curves, AUC (Area Under Curve) and AP (Average Precision), can range from 0 to 1. Values closer to 1 mean that the model is exhibiting excellent performance at the binary classification task. This is certainly the case here, as `AUC=0.992` and `AP=0.978`, although Average Precision is lower than Area Under Curve. 
+The values of the two evaluation metrics shown on the above plot of the ROC and Precision-Recall Curves, AUC (Area Under Curve) and AP (Average Precision), can range from 0 to 1. Values closer to 1 mean that the model is exhibiting excellent performance at the binary classification task. This is certainly the case here, as `AUC=0.992` and `AP=0.978`.
 
-#### Figure 4: Model Evaluation for Artificial Neural Network
+The ANN achieved a test accuracy of 89.25% and a training accuracy of 86.29%. Below, the confusion matrix is plotted with the ROC and Precision-Recall curves:
+
 ![Model Evaluation for Artificial Neural Network](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/ann_model_ev.png)
+#### Figure 4: Model Evaluation for Artificial Neural Network
 
-This model is has a high precision but low recall; only 3 false positives but 141 false negatives. One can also see that the ANN performs much worse on the ROC and Precision-Recall curves compared to the random forest.
+This model is has a high precision but low recall; only 3 false positives but 141 false negatives. This is less false positives than the random forest model, but many more false negatives. One can also see that the ANN performs much worse on the ROC and Precision-Recall curves compared to the random forest.
 
 ## Discussion
 
-Finally, I used my model to classify ships with seven of the provided scenes (I left out the 8th scene, 'sfbay_1', because it had 4 channels rather than matching the 3 channels of the RGB training data). These scenes were included as a way to visualize the performance of the model as it is applied across a satellite image of a larger area. I used a sliding windows approach to accomplish this. Specicifically, I divided the scene up into 80x80 overlapping images (with a step size of 10) and applied the model to each image, iterating over the entire scene, then plotted bounding boxes around each 'ship' as predicted by the model.
+Finally, I used my model to classify ships with seven of the provided scenes (I left out the 8th scene, 'sfbay_1', because it had 4 channels rather than matching the 3 channels of the RGB training data). These scenes were included as a way to visualize the performance of the model as it is applied across a satellite image of a larger area. I used a sliding windows approach to accomplish this. Specicifically, I divided the scene up into 80x80 overlapping images (with a step size of 10) and applied the model to each image, iterating over the entire scene. Then, I plotted bounding boxes around each 'ship' as predicted by the model.
 
 ![Results](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/rf_results.png)
 #### Figure 5: Ship Detection Results with Random Forest
@@ -100,13 +102,13 @@ We can see that the random forest is classifying most of the actual ships correc
 ![Results](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/ann_results.png)
 #### Figure 6: Ship Detection Results with Artificial Neural Network
 
-In contrast with the random forest results, this artificial neural network doesn't have a problem with breakwaters, which represent relatively "skinny" lines running across a given image. However, it has significant issues with coastal images. In Alamitos Bay in 'lb_4' (located in the upper right), one can visually see that there are many false positives along the water channel.
+In contrast with the random forest results, this artificial neural network doesn't have a problem with breakwaters, which represent relatively "skinny" lines running across a given image. However, it has significant issues with coastal images. In Alamitos Bay in 'lb_4' (located in the upper right), one can visually see that there are many false positives along the water channel. The ANN also performs worse at classifying the actual ships when compared to the RF model.
+
+Belgiu and Drăguţ (2016)[^2] mention that random forests have been implemented successfully to classify satellite imagery sourced from both commercial and governmental programs, including NASA (MODIS, Landsat, and IKONOS), the European Space Agency (WorldView-2), and Planet Labs itself (RapidEye). These models were used to create maps of boreal forest habitats, tree biomass, canopy cover, and insect defoliation levels. Belgiu and Drăguţ note that random forest models "outperform decision tree classifiers (Ghimire et al., 2012, Gislason et al., 2006, Han et al., 2015)...and ANN classifiers (Chan and Paelinckx, 2008) in terms of classification accuracy." This lines up with the performance of the models here, with the random forest outperforming the ANN.
 
 ## Conclusion
 
-The random forest model has a better recall on the scenes, correctly identifying nearly all the actual ships.
-
-We can see that each model has its own emergent strengths and weaknesses due to the fundamental differences in architecture between a random forest and a neural network. However, we can see that the random forest model clearly wins out, both when applied to the test data and over entire scenes.
+We can see that each model has its own emergent strengths and weaknesses due to the fundamental differences in architecture between a random forest and a neural network. However, we can see that the random forest model clearly wins out, both when applied to the test data and over entire scenes; it correctly identified nearly all the actual ships. However, the high rate of false positives when generalizing the model to scenes presents a significant issue if one is aiming to apply a similar model to satellite imagery of various sizes. An improved model would need to be developed, perhaps requiring more computational resources and time. Convolutional neural networks could be an interesting architecture to implement in similar ship detection problems in the future. Additionally, obtaining a different data set with more images could be helpful. Future studies could also expand beyond binary classification to classify various types of ships and different classes of atmosphere, land, and ocean features.
 
 ## References
 
