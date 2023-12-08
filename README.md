@@ -88,16 +88,14 @@ model = models.Sequential([
 I had experimented with various architectures and this one performs decently well compared to the random forest model, but takes much longer to train and implement.
 
 #### Figure 4: Model Evaluation for Artificial Neural Network
-![Model Evaluation for Artificial Neural Network](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/ann_model_eval.png)
-
-#### Figure :
+![Model Evaluation for Artificial Neural Network](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/ann_model_ev.png)
 
 ## Results
 
 Finally, I used my model to classify ships with seven of the provided scenes (I left out the 8th scene, 'sfbay_1', because it had 4 channels rather than matching the 3 channels of the RGB training data). These scenes were included as a way to visualize the performance of the model as it is applied across a satellite image of a larger area. I used 
 
 ![Results](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/rf_results.png)
-#### Figure x: Ship Detection Results with Random Forest
+#### Figure 5: Ship Detection Results with Random Forest
 
 We can see that the random forest is classifying most of the actual ships correctly, but is generalizing poorly to parts of the scene such as piers and breakwaters.
 
