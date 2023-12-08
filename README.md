@@ -1,8 +1,8 @@
-# Final Project: Ship Detection with Random Forest and Neural Network
+# Ship Detection with Random Forest and Neural Network
 
 Alex Akin
 
-Department of Atmospheric and Oceanic Sciences, University of California, Los Angeles
+Department of Atmospheric and Oceanic Sciences, UCLA
 
 AOS C111: Introduction to Machine Learning for the Physical Sciences
 
