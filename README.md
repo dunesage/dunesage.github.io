@@ -104,6 +104,8 @@ In contrast with the random forest results, this artificial neural network doesn
 
 ## Conclusion
 
+The random forest model has a better recall on the scenes, correctly identifying nearly all the actual ships.
+
 We can see that each model has its own emergent strengths and weaknesses due to the fundamental differences in architecture between a random forest and a neural network. However, we can see that the random forest model clearly wins out, both when applied to the test data and over entire scenes.
 
 ## References
