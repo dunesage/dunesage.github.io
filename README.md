@@ -50,7 +50,7 @@ I used two different machine learning approaches: a ***random forest of decision
 
 A random forest is an ensemble method that improves upon the performance of an individual decision tree. As my data set was labeled, this is considered supervised learning. Specifically, I selected a binary classification tree architecture, meaning that my decision trees returns either a 0 ('no-ship') or 1 ('ship'). I built it using scikit-learn's `RandomForestClassifier` implementation. I experimented with hyperparameters using `RandomizedSearchCV`, and landed on these: `n_estimators=300, max_depth=25, min_samples_leaf=5` with `class_weight='balanced'`.
 
-For my ANN architecture, I chose a deep learning approach with four hidden layers configured with ReLU activations:
+For my artificial neural network architecture, I chose a deep learning model with four hidden layers configured with ReLU activations:
 
 ```python
 model = models.Sequential([
@@ -63,7 +63,7 @@ model = models.Sequential([
 ])
 ```
 
-I had experimented with various architectures and this one performs decently well compared to the random forest model, but takes much longer to train and implement.
+I experimented with various architectures before arriving at this. The deep learning model performs decently well on the scenes as plotted in the Discussion section, but this architecture did not produce the highest accuracies on the actual training and test data when compared to simpler architectures. Compared to the random forest model, the artificial neural networks I experimented with took much longer to train and implement.
 
 ## Results
 
