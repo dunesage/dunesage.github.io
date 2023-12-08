@@ -23,7 +23,7 @@ The amount of satellite imagery collected by Earth observation satellites has be
 Journalists at leading newspapers use Planet Labs imagery to provide a birds-eye view of many current events. For example, The New York Times [Visual Investigations team](https://www.nytimes.com/spotlight/visual-investigations) found a Planet image of a cargo ship called Galaxy Leader that was [anchored offshore](https://www.nytimes.com/2023/11/21/world/middleeast/houthi-hijack-ship-galaxy-leader.html) before being hijacked off the coast of Yemen:
 ![nyt](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/nyt.png)
 
-Inspired by the idea of identifying ships from satellite data, I obtained a dataset with the title [Ships in Satellite Imagery](https://www.kaggle.com/datasets/rhammell/ships-in-satellite-imagery) from the data science platform Kaggle. The data was posted by the user [rhammell](https://www.kaggle.com/rhammell), who shared 4000 80x80 RGB images "extracted from Planet satellite imagery over the San Francisco Bay and San Pedro Bay areas of California." Of these 4000 images, 1000 were labeled as 'ship' and 3000 as 'no-ship'. The particulars of each class are described below by the curator of the data set:
+Inspired by the idea of identifying ships from satellite data, I obtained a dataset with the title [Ships in Satellite Imagery](https://www.kaggle.com/datasets/rhammell/ships-in-satellite-imagery) from the data science platform Kaggle. The data was posted by the user [rhammell](https://www.kaggle.com/rhammell), who shared 4000 80x80 RGB images "extracted from Planet satellite imagery over the San Francisco Bay and San Pedro Bay areas of California." These are some of the [busiest port areas](https://lao.ca.gov/Publications/Report/4618Of) in California for container shipping, being located offshore of the state's two main metropolitan areas: the Bay Area and Los Angeles. OF these 4000 images, 1000 were labeled as 'ship' and 3000 as 'no-ship'. The particulars of each class are described below by the curator of the data set:
 
 > **'ship':** Images in this class are centered on the body of a single ship. Ships of different sizes, orientations, and atmospheric collection conditions are included. 
 
@@ -46,9 +46,9 @@ Note that the average ship included in the 'ship' class is tilted at about a 20 
 
 Belgiu and Drăguţ (2016)[^2] mention that random forests have been implemented successfully to classify satellite imagery sourced from both commercial and governmental programs, including NASA (MODIS, Landsat, and IKONOS), the European Space Agency (WorldView-2), and Planet Labs itself (RapidEye). These models were used to create maps of boreal forest habitats, tree biomass, canopy cover, and insect defoliation levels. The authors say that random forest models "outperform decision tree classifiers (Ghimire et al., 2012, Gislason et al., 2006, Han et al., 2015)...and ANN classifiers (Chan and Paelinckx, 2008) in terms of classification accuracy."
 
-I use a ***random forest of decision trees*** and an ***artificial neural network*** to classify Planet imagery in order to investigate the opportunities and challenges of applying this model architecture. I discuss the performance of the models I trained and how they generalized to the 'scenes' included in the data set. 
+I used two different machine learning approaches: a ***random forest of decision trees*** and an ***artificial neural network*** to classify the images in my data set.
 
-In relation to the wider world of machine learning models, a random forest is an ensemble method that improves upon the performance of an individual decision tree. As my data set was labeled, this is considered supervised learning. Specifically, I selected a binary classification tree architecture, meaning that my decision trees returns either a 0 ('noship') or 1 ('ship'). I built it using scikit-learn's `RandomForestClassifier` implementation. 
+A random forest is an ensemble method that improves upon the performance of an individual decision tree. As my data set was labeled, this is considered supervised learning. Specifically, I selected a binary classification tree architecture, meaning that my decision trees returns either a 0 ('noship') or 1 ('ship'). I built it using scikit-learn's `RandomForestClassifier` implementation. 
 
 I experimented with hyperparameters using `RandomizedSearchCV`, and landed on these:
 
@@ -74,15 +74,6 @@ On the left subplot, we see the ROC curve with a baseline classifer that perform
 
 The values of the two evaluation metrics shown on the above plot of the ROC and Precision-Recall Curves, AUC (Area Under Curve) and AP (Average Precision), can range from 0 to 1. Values closer to 1 mean that the model is exhibiting excellent performance at the binary classification task. This is certainly the case here, as `AUC=0.992` and `AP=0.978`, although Average Precision is lower than Area Under Curve. 
 
-## Results
-
-Finally, I used my model to classify ships with seven of the provided scenes (I left out the 8th scene, 'sfbay_1', because it had 4 channels rather than matching the 3 channels of the RGB training data). These scenes were included as a way to visualize the performance of the model as it is applied across a satellite image of a larger area. I used 
-
-![Results](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/rf_results.png)
-#### Figure 5: Ship Detection Results with Random Forest
-
-We can see that the random forest is classifying most of the actual ships correctly, but is generalizing poorly to parts of the scene such as piers and breakwaters.
-
 For my ANN architecture, I chose a deep learning approach with four hidden layers configured with ReLU activations:
 
 ```python
@@ -96,7 +87,18 @@ model = models.Sequential([
 ])
 ```
 
-I had experimented with various architectures and this one performs decently well compared to the random forest model. See below for results:
+I had experimented with various architectures and this one performs decently well compared to the random forest model, but takes much longer to train and implement.
+
+## Results
+
+Finally, I used my model to classify ships with seven of the provided scenes (I left out the 8th scene, 'sfbay_1', because it had 4 channels rather than matching the 3 channels of the RGB training data). These scenes were included as a way to visualize the performance of the model as it is applied across a satellite image of a larger area. I used 
+
+![Results](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/rf_results.png)
+#### Figure 5: Ship Detection Results with Random Forest
+
+We can see that the random forest is classifying most of the actual ships correctly, but is generalizing poorly to parts of the scene such as piers and breakwaters.
+
+ANN results:
 
 ![Results](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/ann_results.png)
 #### Figure 6: Ship Detection Results with Artificial Neural Network
