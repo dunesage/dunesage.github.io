@@ -70,6 +70,9 @@ Plotted below is the confusion matrix for the model along with the feature impor
 Finally, I used my model to classify ships with seven of the provided scenes. This was included as a way to visualize the performance of the model as it is applied across a satellite image of a larger area. 
 
 ![Results](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/ship_detection.png)
+
+We can see that the random forest is classifying most of the actual ships correctly, but is generalizing poorly to parts of the scene such as piers and breakwaters.
+
 #### Figure 6:
 
 #### Figure 7:
