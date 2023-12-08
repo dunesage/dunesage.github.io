@@ -35,7 +35,7 @@ The images can be loaded in as an array of shape 4000x80x80x3, and flattened to 
 
 To illustrate the differences between these two classes of image, I plotted the average red, green, and blue values for the two classes of image (recall that RGB values range from 0-255 and signify the intensity of each color) over an 80x80 grid. I also added the average value of every 20x20 square to make the trends more clear. 
 
-![RGB](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/rgb.png)
+![Average RGB values](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/avg_rgb.png)
 #### Figure 1: Average RGB values
 
 We can clearly see the distinction between the 'ship and 'no-ship' classes in all three channels: note the darker shading in the middle of the images for the first row and the absence of that in the second row. The 'ship' class has higher values in the center of the image and lower values toward the edges, while 'noship' has much more uniform values. 
