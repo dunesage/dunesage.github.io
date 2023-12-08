@@ -1,4 +1,4 @@
-# Final Project: Ship Detection with Random Forest and Neural Network
+# Final Project: Ship Detection with Random Forest and Artificial Neural Network
 
 Alex Akin
 
