@@ -62,6 +62,8 @@ Plotted below is the confusion matrix for the model along with the feature impor
 ![CM/FI](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/cm_fi.png)
 #### Figure 3: Confusion Matrix and Feature Importance
 
+The model is predicting fewer false positives than false negatives. Interestingly, the highest feature importances are all clustered at the center of the 80x80 grid, meaning that the pixels at the center of the images are most important and informative for making correct predictions. This confirms what we know about the labels: that the images in the 'ships' class "are centered on the body of a single ship", which is what distinguishes them from the 'no-ship' class. Therefore, this plot of feature importance for my random forest model makes intuitive sense given what we know about the structure of the data set. 
+
 ![ROC/REC](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/roc_rec.png)
 #### Figure 4: ROC and Precision-Recall Curves
 
