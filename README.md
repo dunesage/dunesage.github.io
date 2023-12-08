@@ -70,7 +70,7 @@ Below are the ROC and Precision-Recall curves
 
 On the left subplot, we see the ROC curve with a baseline classifer that performs no better than random chance plotted as `y=x`. On the right subplot, the Precision-Recall curve is plotted. Put simply, maximizing Precision means being fine with missing False Negatives, while maximizing Recall implies not caring about False Positives.
 
-The values of the two evaluation metrics shown on the above plot of the ROC and Precision-Recall Curves, AUC (Area Under Curve) and AP (Average Precision), range from 0 to 1. Values closer to 1 mean that the model is exhibiting excellent performance at the binary classification task. This is certainly the case here, as `AUC=0.992` and `AP=0.978`, although Average Precision is lower than Area Under Curve. 
+The values of the two evaluation metrics shown on the above plot of the ROC and Precision-Recall Curves, AUC (Area Under Curve) and AP (Average Precision), can range from 0 to 1. Values closer to 1 mean that the model is exhibiting excellent performance at the binary classification task. This is certainly the case here, as `AUC=0.992` and `AP=0.978`, although Average Precision is lower than Area Under Curve. 
 
 ## Results
 
