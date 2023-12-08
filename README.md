@@ -87,7 +87,8 @@ model = models.Sequential([
 
 I had experimented with various architectures and this one performs decently well compared to the random forest model, but takes much longer to train and implement.
 
-#### Figure :
+#### Figure 4: Model Evaluation for Artificial Neural Network
+![Model Evaluation for Artificial Neural Network](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/ann_model_eval.png)
 
 #### Figure :
 
