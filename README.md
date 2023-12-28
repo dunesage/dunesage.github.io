@@ -21,7 +21,7 @@ Machine learning was first defined by Arthur Samuel in 1959, and closely related
 Journalists at leading newspapers use Planet Labs imagery to provide a birds-eye view of many current events. For example, The New York Times [Visual Investigations team](https://www.nytimes.com/spotlight/visual-investigations) found a Planet image of a cargo ship called Galaxy Leader that was [anchored offshore](https://www.nytimes.com/2023/11/21/world/middleeast/houthi-hijack-ship-galaxy-leader.html) before being hijacked off the coast of Yemen:
 ![nyt](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/nyt.png)
 
-Inspired by the idea of identifying ships from satellite data, I obtained a dataset with the title [Ships in Satellite Imagery](https://www.kaggle.com/datasets/rhammell/ships-in-satellite-imagery) from the data science platform Kaggle. The data was posted by the user [rhammell](https://www.kaggle.com/rhammell), who shared 4000 80x80 RGB images "extracted from Planet satellite imagery over the San Francisco Bay and San Pedro Bay areas of California." These are some of the busiest port areas in California for container shipping, being located in the state's two main metropolitan areas: the Bay Area and Los Angeles. The ports of Los Angeles and Long Beach in particular are the busiest container shipping locations in the Western Hemisphere. This makes ship detection a potentially useful tool as a ground truth method for analyzing the number of ships offshore major ports. This could be relevant to understanding the supply chain and industries such as logistics.
+Inspired by the idea of identifying ships from satellite data, I obtained a dataset with the title [Ships in Satellite Imagery](https://www.kaggle.com/datasets/rhammell/ships-in-satellite-imagery) from the data science platform Kaggle. The data was posted by the user [rhammell](https://www.kaggle.com/rhammell), who shared 4000 80x80 RGB images "extracted from Planet satellite imagery over the San Francisco Bay and San Pedro Bay areas of California." These are some of the busiest port areas in California for container shipping, being located in the state's two main metropolitan areas: the Bay Area and Los Angeles. The ports of Los Angeles and Long Beach in particular are the busiest container shipping locations in the Western Hemisphere. Ship detection could potentially be a useful tool as a ground truth method for analyzing the number of ships offshore shipping ports. This could be relevant to understanding supply chains and industries such as logistics.
 
 Of these 4000 images, 1000 were labeled as 'ship' and 3000 as 'no-ship'. The particulars of each class are described below by the curator of the data set:
 
@@ -31,18 +31,18 @@ Of these 4000 images, 1000 were labeled as 'ship' and 3000 as 'no-ship'. The par
 
 In other words, the author intentionally constructed this data set to give machine learning engineers an interesting challenge due to the diversity in the conditions and characteristics of the imagery. 
 
-The images can be loaded in as an array of shape 4000x80x80x3, and flattened to 4000 images of 19200 values. This comes out to 73.24 megabytes, which is a manageable size to train machine learning models in the Google Colaboratory environment.
+The images can be loaded in as an array of shape 4000x80x80x3, and flattened to 4000 images of 19200 values. This comes out to 73.24 megabytes, which is a manageable size to train machine learning models in the Google Colab environment.
 
 To illustrate the differences between these two classes of imagery, I plotted their average red, green, and blue values (recall that RGB values range from 0-255 and signify the intensity of each color) over an 80x80 grid. I also added the average value of every 20x20 square to make the trends more clear. 
 
 ![Average RGB values](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/avg_rgb.png)
 #### Figure 1: Average RGB values
 
-We can clearly see the distinction between the 'ship and 'no-ship' classes in all three channels: note the darker shading in the middle of the images for the first row and the absence of that in the second row. The 'ship' class has higher values in the center of the image and lower values toward the edges, while 'no-ship' has much more uniform values. 
+We can clearly see the distinction between the 'ship and 'no-ship' classes in all three channels: note the considerably darker shading in the middle of the images for the first row and the absence of that in the second row. In other words, the 'ship' class has higher values in the center of the image and lower values toward the edges, while 'no-ship' has much more uniform values.
 
 Note that the average ship included in the 'ship' class is tilted at about a 20 degree angle to the right of the vertical, extends from 10 to 70 on the y-axis and 20 to 60 on the x-axis, and is about 10 pixels wide. Also, the center of the average ship has higher average RGB values than the bow or the stern, which tracks since not all the ships are oriented this way but are all centered in order to be included in the 'ship' class. In the 'no-ship' class, there is still a small increase of about 10 from the RGB values on the edge of the image to those at the center. This could be due to the inclusion of 1000 "partial ships" as a third of the 3000 image 'no-ship' class.
 
-There are also eight scenes included in the data set, which are larger satellite images (thousands of pixels) that capture large areas of the  San Francisco and San Pedro Bays. I will use these, as intended by the author, as a way to visualize the performance of the model after it has been trained on the 4000 smaller images. This will be a qualitative assessment rather than a quantitative one.
+There are also eight scenes included in the data set, which are larger satellite images (thousands of pixels wide and tall) that capture large areas of the  San Francisco and San Pedro Bays. I will use these, as intended by the author, as a way to visualize the performance of the model after it has been trained on the 4000 smaller images. This will be a qualitative assessment rather than a quantitative one.
 
 ## Modeling
 
@@ -88,7 +88,7 @@ The ANN achieved a test accuracy of 89.25% and a training accuracy of 86.29%. Be
 ![Model Evaluation for Artificial Neural Network](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/ann_model_ev.png)
 #### Figure 4: Model Evaluation for Artificial Neural Network
 
-This model is has a high precision but low recall; only 3 false positives but 141 false negatives. This is less false positives than the random forest model, but many more false negatives. One can also see that the ANN performs much worse on the ROC and Precision-Recall curves compared to the random forest.
+This model has a high precision but low recall; only 3 false positives but 141 false negatives. This is less false positives than the random forest model, but many more false negatives. One can also see that the ANN performs much worse on the ROC and Precision-Recall curves compared to the random forest.
 
 ## Discussion
 
