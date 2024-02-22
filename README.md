@@ -92,7 +92,7 @@ This model has a high precision but low recall; only 3 false positives but 141 f
 
 ## Discussion
 
-Finally, I used my model to classify ships with seven of the provided scenes (I left out the 8th scene, 'sfbay_1', because it had 4 channels rather than matching the 3 channels of the RGB training data). These scenes were included as a way to visualize the performance of the model as it is applied across a satellite image of a larger area. I used a sliding windows approach to accomplish this. Specicifically, I divided the scene up into 80x80 overlapping images (with a step size of 10) and applied the model to each image, iterating over the entire scene. Then, I plotted bounding boxes around each 'ship' as predicted by the model.
+Finally, I used my model to classify ships with seven of the provided scenes (I left out the 8th scene, 'sfbay_1', because it had 4 channels rather than matching the 3 channels of the RGB training data). These scenes were included as a way to visualize the performance of the model as it is applied across a satellite image of a larger area. I used a sliding windows approach to accomplish this. I divided the scene up into 80x80 overlapping images (with a step size of 10) and applied the model to each image, iterating over the entire scene. Then, I plotted bounding boxes around each 'ship' as predicted by the model.
 
 ![Results](https://raw.githubusercontent.com/dunesage/dunesage.github.io/main/Images/rf_results.png)
 #### Figure 5: Ship Detection Results with Random Forest
